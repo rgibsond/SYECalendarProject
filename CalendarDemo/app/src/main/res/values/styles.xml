@@ -1,0 +1,12 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="CalendarTextStyle">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+</resources>
