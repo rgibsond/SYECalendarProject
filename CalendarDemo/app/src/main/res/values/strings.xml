@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Calendar Demo</string>
+    <string name="sunday_abbr">SUN</string>
+    <string name="monday_abbr">MON</string>
+    <string name="tuesday_abbr">TUE</string>
+    <string name="wednesday_abbr">WED</string>
+    <string name="thursday_abbr">THU</string>
+    <string name="friday_abbr">FRI</string>
+    <string name="saturday_abbr">SAT</string>
 </resources>

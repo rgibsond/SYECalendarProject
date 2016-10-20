@@ -20,10 +20,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/calendar"
-        android:background="@color/darkGreen"
+        android:background="@color/blue2"
         android:dateTextAppearance="@style/CalendarTextStyle"
         android:weekDayTextAppearance="@style/CalendarTextStyle"
-
         >
     </CalendarView>
 
