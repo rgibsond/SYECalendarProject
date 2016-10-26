@@ -1,0 +1,58 @@
+use SYEProject;
+
+drop table if exists Comments;
+drop table if exists CalendarInfo;
+drop table if exists Events;
+drop table if exists Friends;
+drop table if exists Users;
+
+create table Users(
+    userID INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(64) NOT NULL,
+    password VARCHAR(64) NOT NULL
+);
+
+alter table Users add CONSTRAINT unique_index UNIQUE (username);
+
+create table Friends (
+    friendshipID INT AUTO_INCREMENT PRIMARY KEY,
+    userID INT NOT NULL,
+    friendID INT NOT NULL
+);
+
+alter table Friends add FOREIGN KEY (userID) references Users(userID);
+alter table Friends add FOREIGN KEY (friendID) references Users(userID);
+
+create table Events (
+    eventID INT AUTO_INCREMENT PRIMARY KEY,
+    createdTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    startDate DATETIME NOT NULL,
+    endDate DATETIME NOT NULL
+);
+
+alter table Events add INDEX(startDate);
+alter table Events add INDEX(endDate);
+alter table Events add INDEX(createdTime);
+
+create table CalendarInfo (
+    eventID INT NOT NULL,
+    userID INT NOT NULL,
+    status TINYINT NOT NULL,
+    eventSet INT AUTO_INCREMENT PRIMARY KEY
+);
+
+alter table CalendarInfo add FOREIGN KEY (eventID) references Events(eventID);
+alter table CalendarInfo add FOREIGN KEY (userID) references Users(userID);
+alter table CalendarInfo add INDEX(status);
+
+create table Comments (
+    userID INT NOT NULL,
+    eventID INT NOT NULL,
+    commentID INT AUTO_INCREMENT PRIMARY KEY,
+    content MEDIUMTEXT NOT NULL,
+    createdTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+alter table Comments add FOREIGN KEY (userID) references Users(userID);
+alter table Comments add FOREIGN KEY (eventID) references Events(eventID);
+alter table Comments add INDEX(createdTime);
