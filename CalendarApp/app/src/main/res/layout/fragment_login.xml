@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:orientation="vertical"
+    android:id="@+id/login_fragment_container"
     tools:context="com.sye.kupps.calendarapp.LoginFragment">
 
     <TextView

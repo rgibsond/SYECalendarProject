@@ -36,7 +36,7 @@ public class LoginFragment extends Fragment {
         return root;
     }
 
-    private void initViews(final View root) {
+    private void initViews(View root) {
         usernameView = (EditText) root.findViewById(R.id.username_text_field);
         passwordView = (EditText) root.findViewById(R.id.password_text_field);
 
@@ -56,10 +56,10 @@ public class LoginFragment extends Fragment {
             public void onClick(View view) {
                 // TODO
                 // Redirect to a separate sign up fragment
-                Fragment fragment = new SignUpFragment();
-                FragmentManager fragmentManager = getActivity().getFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.login_fragment, fragment);
+                Fragment signUpFragment = new SignUpFragment();
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction transaction = fm.beginTransaction();
+                transaction.replace(R.id.login_activity_container, signUpFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
