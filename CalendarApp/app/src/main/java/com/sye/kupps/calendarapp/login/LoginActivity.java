@@ -1,9 +1,10 @@
-package com.sye.kupps.calendarapp;
+package com.sye.kupps.calendarapp.login;
 
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+
+import com.sye.kupps.calendarapp.FragmentHandler;
+import com.sye.kupps.calendarapp.R;
 
 public class LoginActivity extends Activity {
 
@@ -14,12 +15,10 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // TODO fix bug where rotation closes sign up and opens login
+        FragmentHandler fh = new FragmentHandler(this);
         loginFragment = new LoginFragment();
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        transaction.replace(R.id.login_activity_container, loginFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        fh.replace(R.id.login_activity_container, loginFragment);
     }
 
     @Override

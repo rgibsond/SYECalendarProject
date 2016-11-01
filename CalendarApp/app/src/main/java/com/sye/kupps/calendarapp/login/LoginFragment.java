@@ -1,8 +1,6 @@
-package com.sye.kupps.calendarapp;
+package com.sye.kupps.calendarapp.login;
 
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.sye.kupps.calendarapp.FragmentHandler;
+import com.sye.kupps.calendarapp.R;
 
 public class LoginFragment extends Fragment {
 
@@ -47,6 +49,15 @@ public class LoginFragment extends Fragment {
                 // TODO
                 // Check that username and password match up and redirect to appropriate
                 // activity. Made need AsyncTask to control what happens in wait time
+
+                if (false) {
+                    // login successful, move onto main app
+                } else {
+                    // unsuccessful, prompt user to retry
+                    usernameView.setBackgroundColor(getResources().getColor(R.color.textedit_error, null));
+                    passwordView.setBackgroundColor(getResources().getColor(R.color.textedit_error, null));
+                    Toast.makeText(getActivity(), "Your login information is incorrect", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -56,12 +67,8 @@ public class LoginFragment extends Fragment {
             public void onClick(View view) {
                 // TODO
                 // Redirect to a separate sign up fragment
-                Fragment signUpFragment = new SignUpFragment();
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction transaction = fm.beginTransaction();
-                transaction.replace(R.id.login_activity_container, signUpFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                FragmentHandler fh = new FragmentHandler(getActivity());
+                fh.replace(R.id.login_activity_container, new SignUpFragment());
             }
         });
 
@@ -71,6 +78,7 @@ public class LoginFragment extends Fragment {
             public void onClick(View view) {
                 // TODO
                 // This is in the could category of features...
+                Toast.makeText(getActivity(), "Sucks to suck fuckboi", Toast.LENGTH_SHORT).show();
             }
         });
     }

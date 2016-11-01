@@ -4,25 +4,28 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:orientation="vertical"
-    android:id="@+id/login_fragment_container"
-    tools:context="com.sye.kupps.calendarapp.LoginFragment">
+    tools:context="com.sye.kupps.calendarapp.login.LoginFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Please Sign In" />
+        android:text="@string/please_sign_in" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username"
+        android:hint="@string/username"
         android:id="@+id/username_text_field"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/padding_20" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        android:hint="Password"
+        android:hint="@string/password"
         android:id="@+id/password_text_field"/>
 
     <LinearLayout

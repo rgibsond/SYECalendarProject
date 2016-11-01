@@ -8,4 +8,9 @@
     <string name="enter_username">Enter a Username</string>
     <string name="enter_a_password">Enter a Password</string>
     <string name="repeat_password">Repeat Password</string>
+    <string name="back_to_sign_in_text">Back to Sign In</string>
+    <string name="register_text">Register</string>
+    <string name="username">Username</string>
+    <string name="please_sign_in">Please Sign In</string>
+    <string name="password">Password</string>
 </resources>

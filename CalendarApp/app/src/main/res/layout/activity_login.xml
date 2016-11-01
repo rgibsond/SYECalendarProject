@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:gravity="center"
     android:layout_height="match_parent"
-    tools:context="com.sye.kupps.calendarapp.LoginActivity">
+    tools:context="com.sye.kupps.calendarapp.login.LoginActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"

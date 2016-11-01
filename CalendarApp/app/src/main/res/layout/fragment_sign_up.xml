@@ -3,8 +3,7 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:id="@+id/signup_fragment_container"
-    tools:context="com.sye.kupps.calendarapp.SignUpFragment">
+    tools:context="com.sye.kupps.calendarapp.login.SignUpFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -36,7 +35,14 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
+        android:text="@string/register_text"
         android:id="@+id/register_button"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back_to_sign_in_text"
+        android:id="@+id/back_to_sign_in_button"
+        />
 
 </LinearLayout>
