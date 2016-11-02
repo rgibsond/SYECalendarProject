@@ -1,6 +1,7 @@
 package com.sye.kupps.calendarapp.login;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
@@ -10,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.sye.kupps.calendarapp.DatabaseManager;
 import com.sye.kupps.calendarapp.FragmentHandler;
+import com.sye.kupps.calendarapp.PlaceholderActivity;
 import com.sye.kupps.calendarapp.R;
 
 
@@ -39,9 +42,6 @@ public class SignUpFragment extends Fragment {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO make this button do stuff
-                // check username is unique
-                // send information to database
                 String username = usernameInput.getText().toString();
                 String password = passwordInput.getText().toString();
                 String repeat = passwordRepeat.getText().toString();
@@ -51,6 +51,8 @@ public class SignUpFragment extends Fragment {
                 } else {
                     Log.e(LOG_TAG, "PASSWORDS DO NOT MATCH");
                 }
+
+                new RegistrationTask(username, password).execute();
             }
         });
 

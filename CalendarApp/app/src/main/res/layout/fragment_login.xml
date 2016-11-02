@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_margin="@dimen/login_margin"
     android:orientation="vertical"
     tools:context="com.sye.kupps.calendarapp.login.LoginFragment">
 
@@ -36,19 +36,19 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign In"
+            android:text="@string/please_sign_in"
             android:id="@+id/sign_in_button"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign Up"
+            android:text="@string/register_text"
             android:id="@+id/sign_up_button"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Forgot Password"
+            android:text="@string/forgot_password"
             android:id="@+id/forgot_password_button"/>
 
     </LinearLayout>

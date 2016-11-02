@@ -27,7 +27,9 @@ create table Events (
     eventID INT AUTO_INCREMENT PRIMARY KEY,
     createdTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     startDate DATETIME NOT NULL,
-    endDate DATETIME NOT NULL
+    endDate DATETIME NOT NULL,
+    title VARCHAR(32) NOT NULL,
+    description MEDIUMTEXT NOT NULL
 );
 
 alter table Events add INDEX(startDate);
