@@ -11,6 +11,14 @@
     android:gravity="center"
     tools:context="com.sye.kupps.calendarapp.PlaceholderActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/activity_placeholder_container"
+        >
+    </LinearLayout>
+
     <TextView
         android:textAlignment="center"
         android:gravity="center"

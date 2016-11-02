@@ -15,7 +15,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // TODO fix bug where rotation closes sign up and opens login
+        // TODO fix bug where rotation closes sign up and opens log in
         FragmentHandler fh = new FragmentHandler(this);
         loginFragment = new LoginFragment();
         fh.replace(R.id.login_activity_container, loginFragment);
