@@ -76,13 +76,11 @@ public class DatabaseManager {
         }
 
         String serverResponse = sendPostData(postParams.toString());
+        Log.i(LOG_TAG, "Server response: " + serverResponse);
         if (serverResponse == null || serverResponse.equals(failedResponse))
             return false;
 
-        Log.i(LOG_TAG, "Response from the server is: " + successResponse);
-        boolean result = serverResponse.equals(successResponse);
-        Log.i(LOG_TAG, "Result of call to register: " + result);
-        return result;
+        return serverResponse.equals(successResponse);
     }
 
     /**
