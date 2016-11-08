@@ -10,7 +10,7 @@ public class AppActivity extends Activity {
     public static final int CONTAINER_ID = R.id.activity_app_container;
 
     ImageButton calendarButton, profileButton;
-    FragmentHandler fh;
+    public FragmentHandler fh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
