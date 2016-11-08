@@ -17,7 +17,7 @@ if ($db != NULL) {
 
     /*
      * If post is set to sign up this script calls the sign up function.
-     * Returns '0' if the operation was successful and -1 if the username
+     * Returns '0' if the operation was successful and '-1' if the username
      * is taken.
      */
     if (isset($_POST['SIGN_UP'])) {
@@ -29,14 +29,14 @@ if ($db != NULL) {
 
     /*
      * If post[register] is set then we're adding a new account.
-     * This will return '0' if the operation was successful and -1 if the
-     * registration failed implying that the username is already taken
+     * This will return '0' if the operation was successful and '-1' if the
+     * sign in failed.
      */
     if (isset($_POST['SIGN_IN'])) {
         $u = $_POST['username'];
         $p = $_POST['password'];
         $result = signIn($db, $u, $p);
-        echo $result;
+        echo ($result) ? '0' : '-1';
     }
 
 }

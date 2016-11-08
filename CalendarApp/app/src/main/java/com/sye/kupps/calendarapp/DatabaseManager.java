@@ -7,12 +7,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.net.URLEncoder;
 
 /**
@@ -38,10 +34,38 @@ public class DatabaseManager {
 
     /** Post data identifiers */
     private static final String REGISTER = "SIGN_UP";
+    private static final String LOGIN = "SIGN_IN";
     private static final String USERNAME = "username";
     private static final String PASSWORD = "password";
 
     private static final String LOG_TAG = DatabaseManager.class.getName();
+
+    /**
+     * Sends a request to the database for verification of a username and password combo.
+     *
+     * @param username The username of the attempted login
+     * @param password The password of the attempted login
+     *
+     * @return True if the login was successful and false otherwise.
+     */
+    public boolean login(String username, String password) {
+        String successResponse = "0";
+        String failedResponse = "-1";
+
+        String[][] params = {
+                {LOGIN, LOGIN},
+                {USERNAME, username},
+                {PASSWORD, password}
+        };
+
+        String postData = buildPostParams(params);
+        String serverResponse = sendPostData(postData);
+
+        Log.i(LOG_TAG, "Server response: " + serverResponse);
+
+        return !(serverResponse == null || serverResponse.equals(failedResponse))
+                && serverResponse.equals(successResponse);
+    }
 
     /**
      * Sends a request to the database to register a new user with the passed username
@@ -58,29 +82,47 @@ public class DatabaseManager {
         String successResponse = "0";
         String failedResponse = "-1";
 
-        StringBuilder postParams = new StringBuilder();
+        String[][] params = {
+                {REGISTER, REGISTER},
+                {USERNAME, username},
+                {PASSWORD, password}
+        };
+
+        String postData = buildPostParams(params);
+        String serverResponse = sendPostData(postData);
+
+        Log.i(LOG_TAG, "Server response: " + serverResponse);
+
+        return !(serverResponse == null || serverResponse.equals(failedResponse))
+                && serverResponse.equals(successResponse);
+    }
+
+    /**
+     * Builds a post string to be sent to the server
+     *
+     * @param params The mapped array of post parameters
+     * @return The single post string to be sent to the server
+     */
+    private String buildPostParams(String[][] params) {
+
+        StringBuilder paramString = new StringBuilder();
+
         try {
-            postParams.append(REGISTER);
-            postParams.append("=");
-            postParams.append(URLEncoder.encode(REGISTER, "UTF-8"));
-            postParams.append("&");
-            postParams.append(USERNAME);
-            postParams.append("=");
-            postParams.append(URLEncoder.encode(username, "UTF-8"));
-            postParams.append("&");
-            postParams.append(PASSWORD);
-            postParams.append("=");
-            postParams.append(URLEncoder.encode(password, "UTF-8"));
+
+            for (int i = 0; i < params.length; i++) {
+                paramString.append(params[i][0]);
+                paramString.append("=");
+                paramString.append(URLEncoder.encode(params[i][1], "UTF-8"));
+                if (i != params.length - 1)
+                    paramString.append("&");
+            }
+
+            return paramString.toString();
+
         } catch (IOException e) {
             Log.e(LOG_TAG, e.toString());
+            return null;
         }
-
-        String serverResponse = sendPostData(postParams.toString());
-        Log.i(LOG_TAG, "Server response: " + serverResponse);
-        if (serverResponse == null || serverResponse.equals(failedResponse))
-            return false;
-
-        return serverResponse.equals(successResponse);
     }
 
     /**
@@ -102,7 +144,6 @@ public class DatabaseManager {
             conn.setUseCaches(false);
             conn.setRequestMethod("POST");
 
-
             // Write post data to connection
             DataOutputStream write = new DataOutputStream(conn.getOutputStream());
             write.writeBytes(postParams);
@@ -111,8 +152,7 @@ public class DatabaseManager {
 
             // Get response
             InputStream response = conn.getInputStream();
-            BufferedReader reader =
-                    new BufferedReader(new InputStreamReader(response));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(response));
             String result = reader.readLine();
             reader.close();
             return result;

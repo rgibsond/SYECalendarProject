@@ -50,11 +50,14 @@ public class LoginFragment extends Fragment {
             public void onClick(View view) {
                 // TODO
                 // Check that username and password match up and redirect to appropriate
-                // activity. Made need AsyncTask to control what happens in wait time
+                // activity. May need AsyncTask to control what happens in wait time
+                new LoginTask().execute(
+                        usernameView.getText().toString(),
+                        passwordView.getText().toString());
 
                 if (false) {
                     // login successful, move onto main app
-                    //Intent intent = new Intent(this, PlaceholderActivity.class);
+                    // Intent intent = new Intent(this, PlaceholderActivity.class);
                 } else {
                     // unsuccessful, prompt user to retry
                     usernameView.setBackgroundColor(getResources().getColor(R.color.textedit_error, null));

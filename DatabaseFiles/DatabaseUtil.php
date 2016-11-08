@@ -19,10 +19,7 @@ function signUp($db, $username, $password) {
 }
 
 /*
- * Returns an integer to denoting the status of the sign in attempt.
- * 0 = Successful sign in
- * 1 = Password incorrect
- * 2 = User does not exist
+ * Returns an true if sign in was successful and false otherwise
  */
 function signIn($db, $username, $password) {
     $select = $db->prepare('select username, password from Users where username=:username;');
@@ -32,12 +29,10 @@ function signIn($db, $username, $password) {
     $user = $select->fetch(PDO::FETCH_ASSOC);
 
     if (isset($user) && $password == $user['password']) {
-        return 0;
-    } else if (isset($user)) {
-        return 1;
+        return True;
     }
 
-    return 2;
+    return False;
 }
 
 ?>

@@ -49,11 +49,11 @@ public class SignUpFragment extends Fragment {
 
                 if (password.equals(repeat)){
                     Log.i(LOG_TAG, username + ", " + password);
+                    new RegistrationTask().execute(username, password);
                 } else {
                     Log.e(LOG_TAG, "PASSWORDS DO NOT MATCH");
                 }
 
-                new RegistrationTask(username, password).execute();
             }
         });
 
