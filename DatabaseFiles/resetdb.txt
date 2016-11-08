@@ -7,21 +7,18 @@ drop table if exists Friends;
 drop table if exists Users;
 
 create table Users(
-    userID INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(64) NOT NULL,
+    username VARCHAR(64) NOT NULL PRIMARY KEY,
     password VARCHAR(64) NOT NULL
 );
 
-alter table Users add CONSTRAINT unique_index UNIQUE (username);
-
 create table Friends (
     friendshipID INT AUTO_INCREMENT PRIMARY KEY,
-    userID INT NOT NULL,
-    friendID INT NOT NULL
+    username VARCHAR(64) NOT NULL,
+    friendname VARCHAR(64) NOT NULL
 );
 
-alter table Friends add FOREIGN KEY (userID) references Users(userID);
-alter table Friends add FOREIGN KEY (friendID) references Users(userID);
+alter table Friends add FOREIGN KEY (username) references Users(username);
+alter table Friends add FOREIGN KEY (friendname) references Users(username);
 
 create table Events (
     eventID INT AUTO_INCREMENT PRIMARY KEY,
@@ -38,23 +35,23 @@ alter table Events add INDEX(createdTime);
 
 create table CalendarInfo (
     eventID INT NOT NULL,
-    userID INT NOT NULL,
+    username VARCHAR(64) NOT NULL,
     status TINYINT NOT NULL,
     eventSet INT AUTO_INCREMENT PRIMARY KEY
 );
 
 alter table CalendarInfo add FOREIGN KEY (eventID) references Events(eventID);
-alter table CalendarInfo add FOREIGN KEY (userID) references Users(userID);
+alter table CalendarInfo add FOREIGN KEY (username) references Users(username);
 alter table CalendarInfo add INDEX(status);
 
 create table Comments (
-    userID INT NOT NULL,
+    username VARVHAR(64) NOT NULL,
     eventID INT NOT NULL,
     commentID INT AUTO_INCREMENT PRIMARY KEY,
     content MEDIUMTEXT NOT NULL,
     createdTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-alter table Comments add FOREIGN KEY (userID) references Users(userID);
+alter table Comments add FOREIGN KEY (username) references Users(username);
 alter table Comments add FOREIGN KEY (eventID) references Events(eventID);
 alter table Comments add INDEX(createdTime);
