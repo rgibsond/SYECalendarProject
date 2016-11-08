@@ -45,4 +45,11 @@
         android:id="@+id/back_to_sign_in_button"
         />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Temporary Bypass"
+        android:id="@+id/bypass"
+        />
+
 </LinearLayout>
