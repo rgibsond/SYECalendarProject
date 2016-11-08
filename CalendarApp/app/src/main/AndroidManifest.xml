@@ -20,8 +20,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PlaceholderActivity"
+            android:name=".placeholders.PlaceholderActivity"
             android:label="@string/title_activity_placeholder" />
+        <activity android:name=".AppActivity"></activity>
     </application>
 
 </manifest>

@@ -14,4 +14,6 @@
     <string name="please_sign_in">Please Sign In</string>
     <string name="password">Password</string>
     <string name="forgot_password">Forgot Password</string>
+    <string name="view_calendar">View Calendar</string>
+    <string name="create_new_event_text">Create new event</string>
 </resources>

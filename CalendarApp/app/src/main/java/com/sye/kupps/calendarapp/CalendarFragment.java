@@ -30,7 +30,7 @@ public class CalendarFragment extends Fragment {
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView calendarView, int year, int month, int day) {
-                dateText.setText(month + "/" + day + "/" + year);
+                dateText.setText((month+1) + "/" + day + "/" + year);
             }
         });
 

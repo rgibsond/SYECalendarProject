@@ -1,0 +1,96 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sye.kupps.calendarapp.ProfileFragment">
+
+    <RelativeLayout
+        android:id="@+id/profile_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        >
+
+        <ImageButton
+            android:id="@+id/profile_picture"
+            android:layout_width="@dimen/prof_pic_h_w"
+            android:layout_height="@dimen/prof_pic_h_w"
+            android:background="@drawable/tbd"
+            />
+
+        <LinearLayout
+            android:id="@+id/user_info_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentRight="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textSize="@dimen/prof_info_text_size"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Status (Busy or Not)"
+                android:textSize="@dimen/prof_info_text_size"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Other Info"
+                android:textSize="@dimen/prof_info_text_size"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Other Info"
+                android:textSize="@dimen/prof_info_text_size"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/profile_buttons_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            >
+
+            <Button
+                android:id="@+id/create_new_event_profile_button"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_weight="1"
+                android:text="@string/create_new_event_text"
+                />
+
+            <Button
+                android:id="@+id/open_calendar_from_profile"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_weight="1"
+                android:text="@string/view_calendar"
+                />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        >
+
+    </ListView>
+
+</LinearLayout>

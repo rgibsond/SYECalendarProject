@@ -1,7 +1,6 @@
 package com.sye.kupps.calendarapp.login;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.sye.kupps.calendarapp.FragmentHandler;
-import com.sye.kupps.calendarapp.PlaceholderActivity;
 import com.sye.kupps.calendarapp.R;
 
 public class LoginFragment extends Fragment {

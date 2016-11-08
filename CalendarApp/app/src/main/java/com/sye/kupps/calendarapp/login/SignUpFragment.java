@@ -11,9 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.sye.kupps.calendarapp.DatabaseManager;
+import com.sye.kupps.calendarapp.AppActivity;
 import com.sye.kupps.calendarapp.FragmentHandler;
-import com.sye.kupps.calendarapp.PlaceholderActivity;
 import com.sye.kupps.calendarapp.R;
 
 
@@ -69,7 +68,7 @@ public class SignUpFragment extends Fragment {
         bypass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), PlaceholderActivity.class);
+                Intent intent = new Intent(getActivity(), AppActivity.class);
                 startActivity(intent);
             }
         });
