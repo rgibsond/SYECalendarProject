@@ -1,6 +1,7 @@
 package com.sye.kupps.calendarapp;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Represents a user of the app and all of their necessary information for the app to function.
@@ -16,7 +17,7 @@ public class User {
     private ArrayList<Event> events;
 
     /** A list of the friends of this user. */
-    private ArrayList<Integer> friends;
+    private HashSet<String> friends;
 
     /**
      * Used to build a User from a string unique to a specific user.
