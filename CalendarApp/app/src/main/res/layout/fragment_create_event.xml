@@ -1,13 +1,38 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.sye.kupps.calendarapp.CreateEventFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <EditText
+        android:id="@+id/event_name_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name of Event" />
 
-</FrameLayout>
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </DatePicker>
+
+    <EditText
+        android:id="@+id/event_end_time_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:text="Start Time"
+        />
+
+    <EditText
+        android:id="@+id/event_start_time_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:text="End Time"
+        />
+
+
+
+</LinearLayout>
