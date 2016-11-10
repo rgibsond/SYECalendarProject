@@ -1,38 +1,98 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.sye.kupps.calendarapp.CreateEventFragment">
 
-    <EditText
-        android:id="@+id/event_name_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name of Event" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <DatePicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/event_name_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Event Title" />
 
-    </DatePicker>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose Date of Event:"
+            android:textSize="@dimen/small_text_size"
+            />
 
-    <EditText
-        android:id="@+id/event_end_time_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="time"
-        android:text="Start Time"
-        />
+        <DatePicker
+            android:id="@+id/new_event_date_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:datePickerMode="spinner"
+            />
 
-    <EditText
-        android:id="@+id/event_start_time_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="time"
-        android:text="End Time"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose Start Time:"
+            android:textSize="@dimen/small_text_size"
+            />
+
+        <TimePicker
+            android:id="@+id/event_start_time_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose End Time:"
+            android:textSize="@dimen/small_text_size"
+            />
+
+        <TimePicker
+            android:id="@+id/event_end_time_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        
+        <EditText
+            android:id="@+id/new_event_description_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/description"
+            android:lines="8"
+            android:maxLength="256"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <Button
+                android:id="@+id/submit_new_event_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/submit"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"/>
+
+            <Button
+                android:id="@+id/cancel_new_event_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cancel"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 
-</LinearLayout>
+
+</ScrollView>

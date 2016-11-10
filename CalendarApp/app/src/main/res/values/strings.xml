@@ -16,4 +16,7 @@
     <string name="forgot_password">Forgot Password</string>
     <string name="view_calendar">View Calendar</string>
     <string name="create_new_event_text">Create new event</string>
+    <string name="cancel">Cancel</string>
+    <string name="submit">Submit</string>
+    <string name="description">Description</string>
 </resources>

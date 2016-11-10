@@ -26,4 +26,12 @@
         >
     </CalendarView>
 
+    <Button
+        android:id="@+id/set_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calendar"
+        android:text="Set Time"
+        />
+
 </RelativeLayout>

@@ -7,4 +7,7 @@
     <string name="thursday_abbr">THU</string>
     <string name="friday_abbr">FRI</string>
     <string name="saturday_abbr">SAT</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

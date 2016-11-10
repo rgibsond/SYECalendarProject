@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
@@ -11,6 +12,7 @@ public class MainActivity extends Activity {
 
     CalendarView calendar;
     Resources res;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
