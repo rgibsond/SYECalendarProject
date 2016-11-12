@@ -8,6 +8,8 @@ try {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 } catch (PDOException $e) {
+    echo "Failed Connection";
+    echo "\n";
     echo $e;
     exit();
 }

@@ -23,6 +23,8 @@ import java.net.URLEncoder;
  */
 public class DatabaseManager {
 
+    // TODO NEED TO FIGURE OUT PASSWORD HASHING
+
     /**
      * This is the IP Address of my MAMP server. As long as the testing device is on SLU wifi
      * this connection should work provided my laptop is on and the server is running.

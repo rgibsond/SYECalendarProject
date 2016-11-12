@@ -1,0 +1,52 @@
+use SYEProject;
+
+# Users
+insert into Users (username, password) values ("Sterling", "1");
+insert into Users (username, password) values ("Lana", "2");
+insert into Users (username, password) values ("Krieger", "3");
+insert into Users (username, password) values ("Cheryl", "4");
+insert into Users (username, password) values ("Pam", "5");
+insert into Users (username, password) values ("Cyril", "6");
+insert into Users (username, password) values ("Ray", "7");
+insert into Users (username, password) values ("Malory", "8");
+insert into Users (username, password) values ("Woodhouse", "9");
+
+# Friendships
+insert into Friends (username, friendname) values("Sterling", "Lana");
+insert into Friends (username, friendname) values("Lana", "Sterling");
+insert into Friends (username, friendname) values("Sterling", "Pam");
+insert into Friends (username, friendname) values("Pam", "Sterling");
+insert into Friends (username, friendname) values("Ray", "Pam");
+insert into Friends (username, friendname) values("Pam", "Ray");
+insert into Friends (username, friendname) values("Pam", "Cheryl");
+insert into Friends (username, friendname) values("Cheryl", "Pam");
+insert into Friends (username, friendname) values("Krieger", "Cheryl");
+insert into Friends (username, friendname) values("Cheryl", "Krieger");
+insert into Friends (username, friendname) values("Woodhouse", "Malory");
+insert into Friends (username, friendname) values("Malory", "Woodhouse");
+insert into Friends (username, friendname) values("Sterling", "Ray");
+insert into Friends (username, friendname) values("Ray", "Sterling");
+insert into Friends (username, friendname) values("Lana", "Malory");
+insert into Friends (username, friendname) values("Malory", "Lana");
+insert into Friends (username, friendname) values("Woodhouse", "Krieger");
+insert into Friends (username, friendname) values("Krieger", "Woodhouse");
+insert into Friends (username, friendname) values("Cyril", "Woodhouse");
+insert into Friends (username, friendname) values("Woodhouse", "Cyril");
+insert into Friends (username, friendname) values("Lana", "Cyril");
+insert into Friends (username, friendname) values("Cyril", "Lana");
+insert into Friends (username, friendname) values("Ray", "Cyril");
+insert into Friends (username, friendname) values("Cyril", "Ray");
+insert into Friends (username, friendname) values("Malory", "Cheryl");
+insert into Friends (username, friendname) values("Cheryl", "Malory");
+insert into Friends (username, friendname) values("Cyril", "Pam");
+insert into Friends (username, friendname) values("Pam", "Cyril");
+insert into Friends (username, friendname) values("Krieger", "Cyril");
+insert into Friends (username, friendname) values("Cyril", "Krieger");
+insert into Friends (username, friendname) values("Lana", "Cheryl");
+insert into Friends (username, friendname) values("Cheryl", "Lana");
+insert into Friends (username, friendname) values("Ray", "Krieger");
+insert into Friends (username, friendname) values("Krieger", "Ray");
+insert into Friends (username, friendname) values("Krieger", "Pam");
+insert into Friends (username, friendname) values("Pam", "Krieger");
+
+# Events

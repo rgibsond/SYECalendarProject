@@ -16,7 +16,7 @@ public class User {
     /** A list of the events this user is attending/hosting. */
     private ArrayList<Event> events;
 
-    /** A list of the friends of this user. */
+    /** The set of the user's friends. */
     private HashSet<String> friends;
 
     /**
