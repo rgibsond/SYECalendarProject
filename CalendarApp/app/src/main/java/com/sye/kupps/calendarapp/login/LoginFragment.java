@@ -16,6 +16,8 @@ import com.sye.kupps.calendarapp.AppActivity;
 import com.sye.kupps.calendarapp.FragmentHandler;
 import com.sye.kupps.calendarapp.R;
 
+import org.w3c.dom.Text;
+
 public class LoginFragment extends Fragment {
 
     private EditText usernameView;
@@ -56,7 +58,7 @@ public class LoginFragment extends Fragment {
                 // TODO
                 // Check that username and password match up and redirect to appropriate
                 // activity. May need AsyncTask to control what happens in wait time
-                new LoginTask().execute(
+                new LoginTask(LoginFragment.this).execute(
                         usernameView.getText().toString(),
                         passwordView.getText().toString());
 
@@ -100,7 +102,8 @@ public class LoginFragment extends Fragment {
             Intent intent = new Intent(getActivity(), AppActivity.class);
             startActivity(intent);
         } else {
-            // unsuccessful, prompt user to retry
+            TextView waitScreen = (TextView) getActivity().findViewById(R.id.login_wait_screen);
+            waitScreen.setVisibility(View.GONE);
             usernameView.setBackgroundColor(getResources().getColor(R.color.textedit_error, null));
             passwordView.setBackgroundColor(getResources().getColor(R.color.textedit_error, null));
             Toast.makeText(getActivity(), "Your login information is incorrect", Toast.LENGTH_SHORT).show();

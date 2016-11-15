@@ -38,7 +38,7 @@ if ($db != NULL) {
         $u = $_POST['username'];
         $p = $_POST['password'];
         $result = signIn($db, $u, $p);
-        echo ($result) ? '0' : '-1';
+        echo $result;
     }
 
 }

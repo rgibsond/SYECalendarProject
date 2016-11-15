@@ -19,7 +19,8 @@ function signUp($db, $username, $password) {
 }
 
 /*
- * Returns an true if sign in was successful and false otherwise
+ * Returns "null" if sign in failed. If successful, this will return a string
+ * containing the friends and events of the associated user.
  */
 function signIn($db, $username, $password) {
     $select = $db->prepare('select username, password from Users where username=:username;');
@@ -29,10 +30,10 @@ function signIn($db, $username, $password) {
     $user = $select->fetch(PDO::FETCH_ASSOC);
 
     if (isset($user) && $password == $user['password']) {
-        return True;
+        
     }
 
-    return False;
+    return "null";
 }
 
 ?>

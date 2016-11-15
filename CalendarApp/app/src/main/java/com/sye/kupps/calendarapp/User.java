@@ -23,13 +23,9 @@ public class User {
      * Used to build a User from a string unique to a specific user.
      *
      * @param user The string to build the user from.
-     * @param newUser Determines whether or not to treat user as a username or user recovery string
      */
-    public User(String user, boolean newUser) {
-        if (newUser)
-            generateNewUser(user);
-        else
-            restoreUser(user);
+    public User(String user) {
+
     }
 
     /**

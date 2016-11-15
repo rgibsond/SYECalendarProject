@@ -6,6 +6,7 @@ drop table if exists Events;
 drop table if exists Friends;
 drop table if exists Users;
 
+# Information may be added as needed when collecting more user data
 create table Users(
     username VARCHAR(64) NOT NULL PRIMARY KEY,
     password VARCHAR(64) NOT NULL
@@ -23,24 +24,22 @@ alter table Friends add CONSTRAINT unique_index UNIQUE (username, friendname);
 
 create table Events (
     eventID INT AUTO_INCREMENT PRIMARY KEY,
-    creator VARCHAR(64) NOT NULL,
     createdTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     startDate DATETIME NOT NULL,
     endDate DATETIME NOT NULL,
     title VARCHAR(64) NOT NULL,
-    description MEDIUMTEXT NOT NULL
+    description MEDIUMTEXT NOT NULL,
+    access TINYINT NOT NULL
 );
 
 alter table Events add INDEX(startDate);
 alter table Events add INDEX(endDate);
 alter table Events add INDEX(createdTime);
-alter table Events add FOREIGN KEY (creator) references Users(username);
 
 create table Participants (
-    eventID INT NOT NULL,
+    eventID INT NOT NULL PRIMARY KEY,
     username VARCHAR(64) NOT NULL,
-    status TINYINT NOT NULL,
-    eventSet INT AUTO_INCREMENT PRIMARY KEY
+    status TINYINT NOT NULL
 );
 
 alter table Participants add FOREIGN KEY (eventID) references Events(eventID);

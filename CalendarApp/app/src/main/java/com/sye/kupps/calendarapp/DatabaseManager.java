@@ -50,9 +50,7 @@ public class DatabaseManager {
      *
      * @return True if the login was successful and false otherwise.
      */
-    public boolean login(String username, String password) {
-        String successResponse = "0";
-        String failedResponse = "-1";
+    public String login(String username, String password) {
 
         String[][] params = {
                 {LOGIN, LOGIN},
@@ -65,8 +63,7 @@ public class DatabaseManager {
 
         Log.i(LOG_TAG, "Server response: " + serverResponse);
 
-        return !(serverResponse == null || serverResponse.equals(failedResponse))
-                && serverResponse.equals(successResponse);
+        return serverResponse;
     }
 
     /**
