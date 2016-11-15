@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:orientation="horizontal"
-        android:background="@color/textedit_error"
+        android:background="@color/black"
         android:layout_alignParentBottom="true"
         >
 
@@ -68,11 +68,11 @@
             android:layout_weight="1"/>
 
         <ImageButton
-            android:id="@+id/another_image_button4"
+            android:id="@+id/new_event_image_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
-            android:background="@drawable/tbd"
+            android:background="@drawable/neweventicon"
             />
 
         <Space

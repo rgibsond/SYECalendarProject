@@ -1,6 +1,7 @@
 package com.sye.kupps.calendarapp.login;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sye.kupps.calendarapp.AppActivity;
 import com.sye.kupps.calendarapp.FragmentHandler;
 import com.sye.kupps.calendarapp.R;
 
@@ -46,6 +49,10 @@ public class LoginFragment extends Fragment {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+//                TextView waitView = (TextView) getActivity().findViewById(R.id.login_wait_screen);
+//                waitView.setVisibility(View.VISIBLE);
+
                 // TODO
                 // Check that username and password match up and redirect to appropriate
                 // activity. May need AsyncTask to control what happens in wait time
@@ -55,7 +62,7 @@ public class LoginFragment extends Fragment {
 
                 if (false) {
                     // login successful, move onto main app
-                    // Intent intent = new Intent(this, PlaceholderActivity.class);
+                    // Intent intent = new Intent(this, AppActivity.class);
                 } else {
                     // unsuccessful, prompt user to retry
                     usernameView.setBackgroundColor(getResources().getColor(R.color.textedit_error, null));
@@ -85,6 +92,19 @@ public class LoginFragment extends Fragment {
                 Toast.makeText(getActivity(), "Sucks to suck fuckboi", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void onLoginAttemptCompleted(boolean status){
+        if (status) {
+            // login successful, move onto main app
+            Intent intent = new Intent(getActivity(), AppActivity.class);
+            startActivity(intent);
+        } else {
+            // unsuccessful, prompt user to retry
+            usernameView.setBackgroundColor(getResources().getColor(R.color.textedit_error, null));
+            passwordView.setBackgroundColor(getResources().getColor(R.color.textedit_error, null));
+            Toast.makeText(getActivity(), "Your login information is incorrect", Toast.LENGTH_SHORT).show();
+        }
     }
 
     protected void retainInfo() {

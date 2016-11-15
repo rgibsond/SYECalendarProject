@@ -7,4 +7,5 @@
     <dimen name="prof_pic_h_w">200dp</dimen>
     <dimen name="prof_info_text_size">30sp</dimen>
     <dimen name="small_text_size">20sp</dimen>
+    <dimen name="large_text_size">90sp</dimen>
 </resources>

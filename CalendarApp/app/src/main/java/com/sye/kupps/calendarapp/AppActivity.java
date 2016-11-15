@@ -16,7 +16,7 @@ public class AppActivity extends Activity {
 
     private User user;
 
-    ImageButton calendarButton, profileButton;
+    ImageButton calendarButton, profileButton, newEventButton;
     public FragmentHandler fh;
 
     @Override
@@ -41,29 +41,14 @@ public class AppActivity extends Activity {
                 fh.replace(CONTAINER_ID, new ProfileFragment());
             }
         });
+
+        newEventButton = (ImageButton) findViewById(R.id.new_event_image_button);
+        newEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fh.replace(CONTAINER_ID, new CreateEventFragment());
+            }
+        });
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        // Recreate user from preferences
-        String userString = getPreferences(MODE_PRIVATE).getString(USER_RECOVERY_STRING, null);
-
-        if (userString == null)  { // Redirect to login if no one is logged in
-            Intent login = new Intent(this, LoginActivity.class);
-            startActivity(login);
-        }
-
-        user = new User(userString, false);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-
-        // Write user data to preferences for recovery
-        String userString = user.toString();
-        getPreferences(MODE_PRIVATE).edit().putString(USER_RECOVERY_STRING, userString).apply();
-    }
 }

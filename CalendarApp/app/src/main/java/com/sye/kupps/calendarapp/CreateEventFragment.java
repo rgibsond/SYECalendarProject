@@ -62,6 +62,12 @@ public class CreateEventFragment extends Fragment {
         });
 
         cancelButton = (Button) root.findViewById(R.id.cancel_new_event_button);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().popBackStack();
+            }
+        });
 
         return root;
     }

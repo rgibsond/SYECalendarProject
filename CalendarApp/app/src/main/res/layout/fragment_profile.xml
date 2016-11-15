@@ -65,11 +65,11 @@
             >
 
             <Button
-                android:id="@+id/create_new_event_profile_button"
+                android:id="@+id/view_friends_button"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
                 android:layout_weight="1"
-                android:text="@string/create_new_event_text"
+                android:text="TBD take to a list of user's friends"
                 />
 
             <Button
