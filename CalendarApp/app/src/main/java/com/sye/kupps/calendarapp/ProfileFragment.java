@@ -14,10 +14,15 @@ public class ProfileFragment extends Fragment {
 
     Button viewCalendarButton;
     FragmentHandler fh;
+    String username;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        // TODO save username of profile as a saved instance
+
         // Inflate the layout for this fragment
         View root =  inflater.inflate(R.layout.fragment_profile, container, false);
         fh = new FragmentHandler(getActivity());

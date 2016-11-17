@@ -24,9 +24,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_alignParentRight="true">
+            android:layout_alignParentEnd="true"
+            android:paddingRight="@dimen/padding_20">
 
             <TextView
+                android:id="@+id/profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name"
@@ -34,9 +36,10 @@
                 />
 
             <TextView
+                android:id="@+id/profile_current_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current Status (Busy or Not)"
+                android:text="Busy or Not"
                 android:textSize="@dimen/prof_info_text_size"
                 />
 
