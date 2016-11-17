@@ -1,6 +1,7 @@
 package com.sye.kupps.calendarapp.login;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.sye.kupps.calendarapp.AppActivity;
 import com.sye.kupps.calendarapp.FragmentHandler;
 import com.sye.kupps.calendarapp.R;
+import com.sye.kupps.calendarapp.User;
 
 import org.w3c.dom.Text;
 
@@ -51,26 +53,11 @@ public class LoginFragment extends Fragment {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-//                TextView waitView = (TextView) getActivity().findViewById(R.id.login_wait_screen);
-//                waitView.setVisibility(View.VISIBLE);
-
-                // TODO
-                // Check that username and password match up and redirect to appropriate
-                // activity. May need AsyncTask to control what happens in wait time
+                TextView waitView = (TextView) getActivity().findViewById(R.id.login_wait_screen);
+                waitView.setVisibility(View.VISIBLE);
                 new LoginTask(LoginFragment.this).execute(
                         usernameView.getText().toString(),
                         passwordView.getText().toString());
-
-                if (false) {
-                    // login successful, move onto main app
-                    // Intent intent = new Intent(this, AppActivity.class);
-                } else {
-                    // unsuccessful, prompt user to retry
-                    usernameView.setBackgroundColor(getResources().getColor(R.color.textedit_error, null));
-                    passwordView.setBackgroundColor(getResources().getColor(R.color.textedit_error, null));
-                    Toast.makeText(getActivity(), "Your login information is incorrect", Toast.LENGTH_SHORT).show();
-                }
             }
         });
 
@@ -96,11 +83,13 @@ public class LoginFragment extends Fragment {
         });
     }
 
-    public void onLoginAttemptCompleted(boolean status){
-        if (status) {
-            // login successful, move onto main app
+    public void onLoginAttemptCompleted(User user) {
+        if (user != null) {
+            getActivity().getPreferences(Context.MODE_PRIVATE).edit()
+                    .putString(AppActivity.USER_RECOVERY_STRING, user.toString()).apply();
             Intent intent = new Intent(getActivity(), AppActivity.class);
             startActivity(intent);
+            getActivity().finish();
         } else {
             TextView waitScreen = (TextView) getActivity().findViewById(R.id.login_wait_screen);
             waitScreen.setVisibility(View.GONE);

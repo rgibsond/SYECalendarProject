@@ -22,7 +22,7 @@ public class LoginTask extends AsyncTask<String, Void, User> {
         DatabaseManager databaseManager = new DatabaseManager();
         String loginInfo = databaseManager.login(params[0], params[1]);
 
-        boolean loginSuccessful = !loginInfo.equals("null");
+        boolean loginSuccessful = loginInfo != null;
         Log.i(LOG_TAG, "Login successful: " + loginSuccessful);
 
         User loggedInUser = null;
@@ -34,7 +34,7 @@ public class LoginTask extends AsyncTask<String, Void, User> {
 
     @Override
     protected void onPostExecute(User result) {
-        this.loginFragment.onLoginAttemptCompleted(true);
+        this.loginFragment.onLoginAttemptCompleted(result);
     }
 
 }

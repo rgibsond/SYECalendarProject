@@ -19,6 +19,14 @@ function signUp($db, $username, $password) {
 }
 
 /*
+ * Returns the string containing the user's friend and event data.
+ * Only to be used in the signIn helper below.
+ */
+function getUserInfo($username) {
+
+}
+
+/*
  * Returns "null" if sign in failed. If successful, this will return a string
  * containing the friends and events of the associated user.
  */
@@ -29,11 +37,13 @@ function signIn($db, $username, $password) {
 
     $user = $select->fetch(PDO::FETCH_ASSOC);
 
+    $output = "";
     if (isset($user) && $password == $user['password']) {
-        
+        $output = getUserInfo($username);
     }
 
-    return "null";
+    return $output;
 }
+
 
 ?>

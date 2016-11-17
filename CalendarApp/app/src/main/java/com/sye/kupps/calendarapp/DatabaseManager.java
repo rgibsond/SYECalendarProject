@@ -152,9 +152,21 @@ public class DatabaseManager {
             // Get response
             InputStream response = conn.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(response));
-            String result = reader.readLine();
+
+            // Read all lines of result
+            StringBuilder result = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                Log.i(LOG_TAG, "Reading following line: " + line);
+                result.append(line);
+            }
+
             reader.close();
-            return result;
+
+            if (result.toString().isEmpty())
+                return null;
+
+            return result.toString();
 
         } catch (IOException e) {
             Log.i(LOG_TAG, e.toString());

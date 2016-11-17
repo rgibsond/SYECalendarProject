@@ -1,6 +1,8 @@
 package com.sye.kupps.calendarapp;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 
 /**
@@ -25,25 +27,20 @@ public class User {
      * @param user The string to build the user from.
      */
     public User(String user) {
+        String[] userdata = user.split("\n");
 
-    }
+        this.username = userdata[0];
 
-    /**
-     * Instantiates fields from the database information
-     *
-     * @param username The username from which to pull data
-     */
-    private void generateNewUser(String username) {
-        // TODO
-    }
+        this.friends = new HashSet<>();
+        if (userdata.length > 0) {
+            String[] friendString = userdata[1].split(", ");
+            Collections.addAll(this.friends, friendString);
+        }
 
-    /**
-     * Instantiates fields from parsing the userString
-     *
-     * @param userString The userString to parse
-     */
-    private void restoreUser(String userString) {
-        // TODO
+        this.events = new ArrayList<>();
+        if (userdata.length > 1) {
+            // TODO Parse event data
+        }
     }
 
     /**
@@ -53,8 +50,15 @@ public class User {
      */
     @Override
     public String toString() {
-        // TODO
-        return null;
+        StringBuilder s = new StringBuilder();
+        s.append(username);
+        s.append("\n");
+
+        String friendString = this.friends.toString();
+        friendString = friendString.substring(1, friendString.length() - 1);
+
+        s.append(friendString);
+        return s.toString();
     }
 
 }
