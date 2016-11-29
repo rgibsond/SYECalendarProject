@@ -6,13 +6,13 @@ import com.sye.kupps.calendarapp.DatabaseManager;
 import com.sye.kupps.calendarapp.User;
 
 
-public class LoginTask extends AsyncTask<String, Void, User> {
+class LoginTask extends AsyncTask<String, Void, User> {
 
     private static final String LOG_TAG = LoginTask.class.getName();
 
     private LoginFragment loginFragment;
 
-    public LoginTask(LoginFragment loginFragment) {
+    LoginTask(LoginFragment loginFragment) {
         this.loginFragment = loginFragment;
     }
 

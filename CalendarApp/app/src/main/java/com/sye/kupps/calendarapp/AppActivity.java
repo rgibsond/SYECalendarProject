@@ -51,4 +51,11 @@ public class AppActivity extends Activity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String userString = getPreferences(MODE_PRIVATE).getString(USER_RECOVERY_STRING, null);
+        user = new User(userString);
+    }
+
 }

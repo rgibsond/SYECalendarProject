@@ -23,7 +23,7 @@ function signUp($db, $username, $password) {
  * Only to be used in the signIn helper below.
  */
 function getUserInfo($username) {
-
+    
 }
 
 /*
