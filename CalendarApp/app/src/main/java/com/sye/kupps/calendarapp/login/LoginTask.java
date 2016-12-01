@@ -19,6 +19,7 @@ class LoginTask extends AsyncTask<String, Void, User> {
     @Override
     protected User doInBackground(String... params) {
 
+        Log.i(LOG_TAG, "Login task started");
         DatabaseManager databaseManager = new DatabaseManager();
         String loginInfo = databaseManager.login(params[0], params[1]);
 

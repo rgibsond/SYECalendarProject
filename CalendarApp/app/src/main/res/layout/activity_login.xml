@@ -8,15 +8,6 @@
     android:layout_height="match_parent"
     tools:context="com.sye.kupps.calendarapp.login.LoginActivity">
 
-    <TextView
-        android:id="@+id/login_wait_screen"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:gravity="center"
-        android:text="@string/please_wait"
-        android:textSize="@dimen/large_text_size"
-        />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -28,5 +19,15 @@
         >
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/login_wait_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:gravity="center"
+        android:text="@string/please_wait"
+        android:textSize="@dimen/large_text_size"
+        />
 
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,8 @@ import com.sye.kupps.calendarapp.User;
 import org.w3c.dom.Text;
 
 public class LoginFragment extends Fragment {
+
+    public static final String LOG_TAG = LoginFragment.class.getName();
 
     private EditText usernameView;
 
@@ -55,9 +58,11 @@ public class LoginFragment extends Fragment {
             public void onClick(View view) {
                 TextView waitView = (TextView) getActivity().findViewById(R.id.login_wait_screen);
                 waitView.setVisibility(View.VISIBLE);
+                Log.i(LOG_TAG, "Sign in button clicked");
                 new LoginTask(LoginFragment.this).execute(
                         usernameView.getText().toString(),
                         passwordView.getText().toString());
+                Log.i(LOG_TAG, "Log in task executed");
             }
         });
 

@@ -29,7 +29,7 @@ public class DatabaseManager {
      * This is the IP Address of my MAMP server. As long as the testing device is on SLU wifi
      * this connection should work provided my laptop is on and the server is running.
      */
-    private static final String DATABASE_LINK = "http://10.70.0.95/index.php";
+    private static final String DATABASE_LINK = "http://10.70.0.56/index.php";
 
     /** String returned from the server when there is a failure to connect to the database. */
     private static final String FAILED_CONNECTION = "Failed Connection";

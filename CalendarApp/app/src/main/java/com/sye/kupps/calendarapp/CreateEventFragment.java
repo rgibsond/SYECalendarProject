@@ -56,7 +56,7 @@ public class CreateEventFragment extends Fragment {
 
                     // TODO if it gets here, post data to database
                 }else{
-                    Toast.makeText(getContext(), "Input valid start & end times asshole", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Input valid start & end times", Toast.LENGTH_SHORT).show();
                 }
             }
         });
