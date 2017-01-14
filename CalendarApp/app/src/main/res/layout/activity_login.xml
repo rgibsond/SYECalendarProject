@@ -9,16 +9,14 @@
     tools:context="com.sye.kupps.calendarapp.login.LoginActivity">
 
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
         android:id="@+id/login_activity_container"
-        android:orientation="vertical"
-        >
-
-    </LinearLayout>
+        android:orientation="vertical">
+    </FrameLayout>
 
     <TextView
         android:id="@+id/login_wait_screen"
@@ -27,7 +25,6 @@
         android:visibility="gone"
         android:gravity="center"
         android:text="@string/please_wait"
-        android:textSize="@dimen/large_text_size"
-        />
+        android:textSize="@dimen/large_text_size" />
 
 </RelativeLayout>

@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context="com.sye.kupps.calendarapp.login.SignUpFragment">
+    tools:context="com.sye.kupps.calendarapp.login.RegisterFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

@@ -22,8 +22,16 @@ function signUp($db, $username, $password) {
  * Returns the string containing the user's friend and event data.
  * Only to be used in the signIn helper below.
  */
-function getUserInfo($username) {
-    
+function getUserInfo($db, $username) {
+    $data = "";
+    $data .= $username;
+    $data .= "\n";
+
+    $select_friends = $db->prepare('select friendname from Friends where username=:user');
+    $select_friends->bindParam(":user", $username, PDO::PARAM_STR);
+    $select->execute();
+
+    $friend_data = $select_friends->fetchAll(PDO::FETCH_ASSOC);
 }
 
 /*
@@ -39,7 +47,7 @@ function signIn($db, $username, $password) {
 
     $output = "";
     if (isset($user) && $password == $user['password']) {
-        $output = getUserInfo($username);
+        $output = getUserInfo($db, $username);
     }
 
     return $output;
