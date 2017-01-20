@@ -1,4 +1,4 @@
-package com.sye.kupps.calendarapp;
+package com.sye.kupps.calendarapp.containers;
 
 import java.sql.Timestamp;
 

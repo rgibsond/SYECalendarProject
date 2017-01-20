@@ -9,20 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.sye.kupps.calendarapp.R;
-import com.sye.kupps.calendarapp.User;
+import com.sye.kupps.calendarapp.containers.User;
 
 public class RegisterFragment extends Fragment {
 
-    private Button registerButton;
-    private Button backToSignInButton;
-    private Button bypass;
-    private EditText usernameInput;
-    private EditText passwordInput;
-    private EditText passwordRepeat;
-
-    /** Tags */
+    // Tags
     private static final String LOG_TAG = RegisterFragment.class.getName();
 
     @Override
@@ -37,50 +31,47 @@ public class RegisterFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_sign_up, container, false);
 
-        registerButton = (Button) root.findViewById(R.id.register_button);
-
-        backToSignInButton = (Button) root.findViewById(R.id.back_to_sign_in_button);
-
-        bypass = (Button) root.findViewById(R.id.bypass);
-
-        usernameInput = (EditText) root.findViewById(R.id.register_username_text_field);
-
-        passwordInput = (EditText) root.findViewById(R.id.register_password_text_field);
-
-        passwordRepeat = (EditText) root.findViewById(R.id.register_repeat_password_text_field);
-
+        final EditText usernameInput = (EditText) root.findViewById(R.id.register_username_text_field);
+        final EditText passwordInput = (EditText) root.findViewById(R.id.register_password_text_field);
+        final EditText passwordRepeat = (EditText) root.findViewById(R.id.register_repeat_password_text_field);
+        final RegisterFragment fragment = this;
+        Button registerButton = (Button) root.findViewById(R.id.register_button);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                String username = usernameInput.getText().toString();
-//                String password = passwordInput.getText().toString();
-//                String repeat = passwordRepeat.getText().toString();
-//
-//                if (password.equals(repeat)){
-//                    Log.i(LOG_TAG, username + ", " + password);
-//                    new RegistrationTask().execute(username, password);
-//                } else {
-//                    Log.e(LOG_TAG, "PASSWORDS DO NOT MATCH");
-//                }
 
+                String username = usernameInput.getText().toString();
+                String password = passwordInput.getText().toString();
+                String repeat = passwordRepeat.getText().toString();
+
+                // Displays various toasts based on failed register attempts
+                String message;
+                if (username.isEmpty()) {
+                    message = "Must have a username";
+                    Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+                } else if (password.isEmpty()) {
+                    message = "Cannot have empty password";
+                    Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+                } else if (!password.equals(repeat)) {
+                    message = "Passwords must match";
+                    Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.i(LOG_TAG, "RegistrationTask initialized");
+                    ((LoginActivity) getActivity()).onRegistrationAttempt();
+                    new RegisterTask(fragment).execute(username, password);
+                }
             }
         });
 
+        Button backToSignInButton = (Button) root.findViewById(R.id.back_to_sign_in_button);
         backToSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((LoginActivity) getActivity()).goToLogin();
+                Log.i(LOG_TAG, "Sent to login fragment");
+                ((LoginActivity) getActivity()).goToLogin(true);
             }
         });
 
-        bypass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((LoginActivity) getActivity()).bypass();
-            }
-        });
-
-        // Inflate the layout for this fragment
         return root;
     }
 
@@ -92,14 +83,28 @@ public class RegisterFragment extends Fragment {
      */
     private static class RegisterTask extends AsyncTask<String, Void, User> {
 
+        RegisterFragment registerFragment;
+
+        RegisterTask(RegisterFragment fragment) {
+            this.registerFragment = fragment;
+        }
+
         @Override
         protected User doInBackground(String... params) {
+
+            try {
+                Thread.sleep(3000L);
+            } catch (InterruptedException e) {
+                Log.i(LOG_TAG, "Register task interrupted");
+            }
+
+            //return User.createMockUser();
             return null;
         }
 
         @Override
         protected void onPostExecute(User user) {
-
+            ((LoginActivity) registerFragment.getActivity()).onRegistrationAttemptCompleted(user);
         }
 
     }

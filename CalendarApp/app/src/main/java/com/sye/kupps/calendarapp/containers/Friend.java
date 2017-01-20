@@ -1,4 +1,4 @@
-package com.sye.kupps.calendarapp;
+package com.sye.kupps.calendarapp.containers;
 
 import java.util.HashSet;
 
@@ -14,7 +14,5 @@ public class Friend {
     public Friend(String friendData) {
 
     }
-
-
 
 }
