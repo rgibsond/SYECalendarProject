@@ -24,6 +24,10 @@ public class LoginActivity extends Activity {
     // Used for verifying which fragment was last showing on rotation
     private int lastFragment;
 
+    // Workaround for maintaining which fragment should appear on rotation after back stack
+    // has been popped.
+    private int lastBackStackCount;
+
     // If true an async task is in progress and the wait screen should remain visible
     private boolean taskInProgress;
 
@@ -31,6 +35,7 @@ public class LoginActivity extends Activity {
     private static final String LOGIN_FRAGMENT_TAG = "LOGIN_FRAGMENT_KEY";
     private static final String REGISTER_FRAGMENT_TAG = "REGISTER_FRAGMENT_KEY";
     private static final String LAST_FRAGMENT_TAG = "LAST_FRAGMENT_TAG";
+    private static final String LAST_BACK_STACK_TAG = "LAST_BACK_STACK_TAG";
     private static final String USER_STRING = "USER_STRING";
     private static final String USER_OBJECT = "USER_OBJECT";
     private static final String TASK_IN_PROGRESS_TAG = "TASK_IN_PROGRESS_TAG";
@@ -51,7 +56,7 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
 
         fragmentManager = getFragmentManager();
-        //fragmentManager.addOnBackStackChangedListener(getBackStackListener());
+        fragmentManager.addOnBackStackChangedListener(getBackStackListener());
 
         if (savedInstanceState != null) {
 
@@ -60,6 +65,7 @@ public class LoginActivity extends Activity {
             checkForTask(savedInstanceState);
 
             lastFragment = savedInstanceState.getInt(LAST_FRAGMENT_TAG);
+            lastBackStackCount = savedInstanceState.getInt(LAST_BACK_STACK_TAG);
             if (!taskInProgress) {
                 switch (lastFragment) {
                     case 0:
@@ -83,6 +89,7 @@ public class LoginActivity extends Activity {
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putInt(LAST_FRAGMENT_TAG, lastFragment);
+        savedInstanceState.putInt(LAST_BACK_STACK_TAG, lastBackStackCount);
         savedInstanceState.putBoolean(TASK_IN_PROGRESS_TAG, taskInProgress);
 
         if (loginFragment != null)
@@ -140,12 +147,17 @@ public class LoginActivity extends Activity {
         lastFragment = 0;
 
         FragmentTransaction swap = fragmentManager.beginTransaction();
+
         if (!registerFragment.isHidden())
             swap.hide(registerFragment);
+
         if (loginFragment.isHidden())
             swap.show(loginFragment);
-        if (addToBackStack)
+
+        if (addToBackStack) {
             swap.addToBackStack(LOGIN_FRAGMENT_TAG);
+            lastBackStackCount++;
+        }
 
         swap.commit();
     }
@@ -155,13 +167,17 @@ public class LoginActivity extends Activity {
         lastFragment = 1;
 
         FragmentTransaction swap = fragmentManager.beginTransaction();
+
         if (!loginFragment.isHidden())
             swap.hide(loginFragment);
+
         if (registerFragment.isHidden())
             swap.show(registerFragment);
 
-        if (addToBackStack)
+        if (addToBackStack) {
             swap.addToBackStack(REGISTER_FRAGMENT_TAG);
+            lastBackStackCount++;
+        }
 
         swap.commit();
     }
@@ -235,13 +251,16 @@ public class LoginActivity extends Activity {
         }
     }
 
-//    private FragmentManager.OnBackStackChangedListener getBackStackListener() {
-//        return new FragmentManager.OnBackStackChangedListener() {
-//            @Override
-//            public void onBackStackChanged() {
-//
-//            }
-//        };
-//    }
+    private FragmentManager.OnBackStackChangedListener getBackStackListener() {
+        return new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                int currentBackStackCount = fragmentManager.getBackStackEntryCount();
+                if (lastBackStackCount > currentBackStackCount)
+                    lastFragment++;
+                lastBackStackCount = currentBackStackCount;
+            }
+        };
+    }
 
 }
