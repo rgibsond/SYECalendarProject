@@ -16,6 +16,9 @@ import com.sye.kupps.calendarapp.containers.User;
 
 public class LoginFragment extends Fragment {
 
+    // Hacky way of avoiding a bug on rotation during an async task
+    private boolean isActivityCreated;
+
     // Tags
     private static final String LOG_TAG = LoginFragment.class.getName();
 
@@ -30,6 +33,8 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_login, container, false);
+
+        isActivityCreated = false;
 
         Button login = (Button) root.findViewById(R.id.sign_in_button);
 
@@ -84,6 +89,12 @@ public class LoginFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onActivityCreated(Bundle bundle) {
+        super.onActivityCreated(bundle);
+        isActivityCreated = true;
+    }
+
     /**
      * Task used to login a user.
      * Currently mocked until more of the app is functioning
@@ -117,7 +128,10 @@ public class LoginFragment extends Fragment {
 
         @Override
         protected void onPostExecute(User user) {
-            ((LoginActivity) loginFragment.getActivity()).onLoginAttemptCompleted(user);
+            if (loginFragment.isActivityCreated) {
+                LoginActivity activity = (LoginActivity) loginFragment.getActivity();
+                activity.onLoginAttemptCompleted(user);
+            }
         }
 
     }

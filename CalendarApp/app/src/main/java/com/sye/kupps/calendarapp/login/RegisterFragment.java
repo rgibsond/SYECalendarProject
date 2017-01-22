@@ -16,6 +16,9 @@ import com.sye.kupps.calendarapp.containers.User;
 
 public class RegisterFragment extends Fragment {
 
+    // Hacky way of avoiding a bug on rotation during an async task
+    private boolean isActivityCreated;
+
     // Tags
     private static final String LOG_TAG = RegisterFragment.class.getName();
 
@@ -30,6 +33,8 @@ public class RegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_sign_up, container, false);
+
+        isActivityCreated = false;
 
         final EditText usernameInput = (EditText) root.findViewById(R.id.register_username_text_field);
         final EditText passwordInput = (EditText) root.findViewById(R.id.register_password_text_field);
@@ -75,6 +80,12 @@ public class RegisterFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onActivityCreated(Bundle bundle) {
+        super.onActivityCreated(bundle);
+        isActivityCreated = true;
+    }
+
     /**
      * Task used to register new users in the database.
      * Currently this is mocked until more of the app's functionality is available.
@@ -104,7 +115,10 @@ public class RegisterFragment extends Fragment {
 
         @Override
         protected void onPostExecute(User user) {
-            ((LoginActivity) registerFragment.getActivity()).onRegistrationAttemptCompleted(user);
+            if (registerFragment.isActivityCreated) {
+                LoginActivity activity = (LoginActivity) registerFragment.getActivity();
+                activity.onRegistrationAttemptCompleted(user);
+            }
         }
 
     }

@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -50,7 +51,7 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
 
         fragmentManager = getFragmentManager();
-        //fragmentManager.addOnBackStackChangedListener(this);
+        //fragmentManager.addOnBackStackChangedListener(getBackStackListener());
 
         if (savedInstanceState != null) {
 
@@ -177,6 +178,8 @@ public class LoginActivity extends Activity {
     }
 
     protected void onLoginAttemptCompleted(User user) {
+        Log.i(LOG_TAG, "Login attempt completed");
+
         taskInProgress = false;
         if (user == null) {
 
@@ -210,6 +213,8 @@ public class LoginActivity extends Activity {
     }
 
     protected void onRegistrationAttemptCompleted(User user) {
+        Log.i(LOG_TAG, "Registration attempt completed");
+
         taskInProgress = false;
         if (user == null) {
 
@@ -230,9 +235,13 @@ public class LoginActivity extends Activity {
         }
     }
 
-//    @Override
-//    public void onBackStackChanged() {
-//        lastFragment ^= 1;
+//    private FragmentManager.OnBackStackChangedListener getBackStackListener() {
+//        return new FragmentManager.OnBackStackChangedListener() {
+//            @Override
+//            public void onBackStackChanged() {
+//
+//            }
+//        };
 //    }
 
 }
