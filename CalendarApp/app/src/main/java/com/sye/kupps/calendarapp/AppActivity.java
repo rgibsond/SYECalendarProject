@@ -1,12 +1,11 @@
 package com.sye.kupps.calendarapp;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.sye.kupps.calendarapp.login.LoginActivity;
+import com.sye.kupps.calendarapp.containers.User;
 
 public class AppActivity extends Activity {
 
@@ -54,8 +53,8 @@ public class AppActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        String userString = getPreferences(MODE_PRIVATE).getString(USER_RECOVERY_STRING, null);
-        user = new User(userString);
+//        String userString = getPreferences(MODE_PRIVATE).getString(USER_RECOVERY_STRING, null);
+//        user = new User(userString);
     }
 
 }

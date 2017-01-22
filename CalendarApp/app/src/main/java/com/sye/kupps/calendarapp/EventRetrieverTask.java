@@ -2,6 +2,8 @@ package com.sye.kupps.calendarapp;
 
 import android.os.AsyncTask;
 
+import com.sye.kupps.calendarapp.containers.Event;
+
 /**
  * Created by rgdrys13 on 12/6/2016.
  */
