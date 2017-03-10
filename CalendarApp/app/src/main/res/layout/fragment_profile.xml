@@ -20,13 +20,8 @@
                 android:id="@+id/profile_picture"
                 android:layout_width="@dimen/prof_pic_h_w"
                 android:layout_height="@dimen/prof_pic_h_w"
-                android:background="@drawable/tbd"
+                android:background="@drawable/potter"
                 />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
 
             <LinearLayout
                 android:id="@+id/user_info_layout"
@@ -40,7 +35,7 @@
                     android:id="@+id/profile_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Name"
+                    android:text="Harry Potter"
                     android:textSize="@dimen/prof_info_text_size"
                     />
 
@@ -48,21 +43,21 @@
                     android:id="@+id/profile_current_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Busy or Not"
+                    android:text="*BUSY OR NOT*"
                     android:textSize="@dimen/prof_info_text_size"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Other Info"
+                    android:text="Gryffindor"
                     android:textSize="@dimen/prof_info_text_size"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Other Info"
+                    android:text="*OTHER INFO*"
                     android:textSize="@dimen/prof_info_text_size"
                     />
 
@@ -85,7 +80,7 @@
                 android:layout_width="0dp"
                 android:layout_height="75dp"
                 android:layout_weight="1"
-                android:text="TBD take to a list of user's friends"
+                android:text="Harry Potter's friends"
                 />
 
             <Button
@@ -101,12 +96,55 @@
 
     </RelativeLayout>
 
-    <ListView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
+        android:orientation="vertical"
         >
 
-    </ListView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:text="Harry Potter's events today"
+            android:textSize="@dimen/prof_info_text_size"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textSize="@dimen/prof_info_text_size"
+            android:text="9:00-10:30 AM: Defense Against the Dark Arts"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textSize="@dimen/prof_info_text_size"
+            android:text="11:15-11:45 AM: Lunch with Ginny Weasley"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textSize="@dimen/prof_info_text_size"
+            android:text="12:00-3:30 PM: Quidditch Practice"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textSize="@dimen/prof_info_text_size"
+            android:text="4:00-6:30 AM: Studying. Do not disturb"
+            />
+
+
+    </LinearLayout>
 
 </LinearLayout>

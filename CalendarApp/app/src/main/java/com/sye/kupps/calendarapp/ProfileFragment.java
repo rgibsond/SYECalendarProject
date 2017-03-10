@@ -12,6 +12,7 @@ import android.widget.Button;
  */
 public class ProfileFragment extends Fragment {
 
+    Button viewFriendsButton;
     Button viewCalendarButton;
     FragmentHandler fh;
     String username;
@@ -32,6 +33,14 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 fh.replace(R.id.activity_app_container, new CalendarFragment());
+            }
+        });
+
+        viewFriendsButton = (Button) root.findViewById(R.id.view_friends_button);
+        viewFriendsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fh.replace(R.id.activity_app_container, new FriendListFragment());
             }
         });
 
