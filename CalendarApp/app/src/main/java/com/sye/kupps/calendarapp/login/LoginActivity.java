@@ -32,12 +32,12 @@ public class LoginActivity extends Activity {
     private boolean taskInProgress;
 
     // Tags
+    public static final String USER_OBJECT = "USER_OBJECT";
     private static final String LOGIN_FRAGMENT_TAG = "LOGIN_FRAGMENT_KEY";
     private static final String REGISTER_FRAGMENT_TAG = "REGISTER_FRAGMENT_KEY";
     private static final String LAST_FRAGMENT_TAG = "LAST_FRAGMENT_TAG";
     private static final String LAST_BACK_STACK_TAG = "LAST_BACK_STACK_TAG";
     private static final String USER_STRING = "USER_STRING";
-    private static final String USER_OBJECT = "USER_OBJECT";
     private static final String TASK_IN_PROGRESS_TAG = "TASK_IN_PROGRESS_TAG";
     private static final String LOG_TAG = LoginActivity.class.getName();
 

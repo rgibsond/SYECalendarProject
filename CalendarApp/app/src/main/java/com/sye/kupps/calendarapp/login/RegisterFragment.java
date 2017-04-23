@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.sye.kupps.calendarapp.R;
+import com.sye.kupps.calendarapp.containers.MockDataMaker;
 import com.sye.kupps.calendarapp.containers.User;
 
 public class RegisterFragment extends Fragment {
@@ -77,6 +78,15 @@ public class RegisterFragment extends Fragment {
             }
         });
 
+        Button bypass = (Button) root.findViewById(R.id.bypass);
+        bypass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(LOG_TAG, "Bypass used");
+
+            }
+        });
+
         return root;
     }
 
@@ -104,12 +114,12 @@ public class RegisterFragment extends Fragment {
         protected User doInBackground(String... params) {
 
             try {
-                Thread.sleep(3000L);
+                Thread.sleep(1500L);
+                return MockDataMaker.createUser();
             } catch (InterruptedException e) {
                 Log.i(LOG_TAG, "Register task interrupted");
             }
 
-            //return User.createMockUser();
             return null;
         }
 

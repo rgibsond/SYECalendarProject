@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.sye.kupps.calendarapp.R;
+import com.sye.kupps.calendarapp.containers.MockDataMaker;
 import com.sye.kupps.calendarapp.containers.User;
 
 public class LoginFragment extends Fragment {
@@ -117,12 +118,12 @@ public class LoginFragment extends Fragment {
 
             // Simulate delayed results
             try {
-                Thread.sleep(3000L);
+                Thread.sleep(1500L);
+                return MockDataMaker.createUser();
             } catch (InterruptedException e) {
                 Log.i(LOG_TAG, "Task was interrupted");
             }
 
-            //return User.createMockUser();
             return null;
         }
 
