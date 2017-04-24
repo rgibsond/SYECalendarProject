@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/activity_app_container"
-        android:paddingBottom="100dp"
-        >
+        android:paddingBottom="100dp">
     </LinearLayout>
 
     <LinearLayout
@@ -21,16 +20,14 @@
         android:layout_height="75dp"
         android:orientation="horizontal"
         android:background="@color/black"
-        android:layout_alignParentBottom="true"
-        >
+        android:layout_alignParentBottom="true">
 
         <ImageButton
             android:id="@+id/newsfeed_image_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
-            android:background="@drawable/newsfeed"
-            />
+            android:background="@drawable/newsfeed" />
 
         <Space
             android:layout_width="0dp"
@@ -42,8 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
-            android:background="@drawable/tbd"
-            />
+            android:background="@drawable/tbd" />
 
         <Space
             android:layout_width="0dp"
@@ -55,8 +51,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
-            android:background="@drawable/calendar"
-            />
+            android:background="@drawable/calendar" />
 
         <Space
             android:layout_width="0dp"

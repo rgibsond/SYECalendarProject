@@ -32,7 +32,7 @@ public class ProfileFragment extends Fragment {
         viewCalendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fh.replace(R.id.activity_app_container, new CalendarFragment());
+                fh.replace(R.id.activity_app_container, new CalendarFragment(), true);
             }
         });
 
@@ -40,7 +40,7 @@ public class ProfileFragment extends Fragment {
         viewFriendsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fh.replace(R.id.activity_app_container, new FriendListFragment());
+                fh.replace(R.id.activity_app_container, new FriendListFragment(), true);
             }
         });
 

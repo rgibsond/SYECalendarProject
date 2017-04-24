@@ -34,7 +34,7 @@ public class AppActivity extends Activity {
         calendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fh.replace(CONTAINER_ID, new CalendarFragment());
+                fh.replace(CONTAINER_ID, new CalendarFragment(), true);
             }
         });
 
@@ -42,7 +42,7 @@ public class AppActivity extends Activity {
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fh.replace(CONTAINER_ID, new ProfileFragment());
+                fh.replace(CONTAINER_ID, new ProfileFragment(), true);
             }
         });
 
@@ -50,7 +50,7 @@ public class AppActivity extends Activity {
         newEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fh.replace(CONTAINER_ID, new CreateEventFragment());
+                fh.replace(CONTAINER_ID, new CreateEventFragment(), true);
             }
         });
 
@@ -58,9 +58,11 @@ public class AppActivity extends Activity {
         feedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fh.replace(CONTAINER_ID, new TimelineFragment());
+                fh.replace(CONTAINER_ID, new TimelineFragment(), true);
             }
         });
+
+        fh.replace(CONTAINER_ID, new TimelineFragment(), false);
     }
 
     public User getUser() {

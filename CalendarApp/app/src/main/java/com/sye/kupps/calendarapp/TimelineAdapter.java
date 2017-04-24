@@ -1,6 +1,7 @@
 package com.sye.kupps.calendarapp;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import com.sye.kupps.calendarapp.containers.Event;
 import java.util.List;
 
 public class TimelineAdapter extends ArrayAdapter<Event> {
+
+    private static final String LOG_TAG = TimelineAdapter.class.getName();
 
     private static final String CREATED_BY = "Created by: ";
     private static final String CREATED_ON = "Created on: ";
@@ -30,23 +33,55 @@ public class TimelineAdapter extends ArrayAdapter<Event> {
 
         Event event = getItem(position);
 
-        ((TextView) convertView.findViewById(R.id.timeline_row_title)).setText(event.getTitle());
+        Object tag = convertView.getTag();
+        ViewHolder holder;
+        if (tag == null) {
+
+            holder = new ViewHolder();
+
+            holder.title = ((TextView) convertView.findViewById(R.id.timeline_row_title));
+            holder.createdBy = ((TextView) convertView.findViewById(R.id.timeline_row_creator));
+            holder.createdOn = ((TextView) convertView.findViewById(R.id.timeline_row_created_date));
+            holder.startDate = ((TextView) convertView.findViewById(R.id.timeline_row_start_date));
+            holder.endDate = ((TextView) convertView.findViewById(R.id.timeline_row_end_date));
+            holder.description = ((TextView) convertView.findViewById(R.id.timeline_row_description));
+
+            convertView.setTag(holder);
+            Log.i(LOG_TAG, "Created new ViewHolder");
+
+        } else {
+            Log.i(LOG_TAG, "We're reusing a ViewHolder");
+            holder = (ViewHolder) tag;
+        }
+
+        holder.title.setText(event.getTitle());
 
         String createdBy = CREATED_BY + event.getCreator();
-        ((TextView) convertView.findViewById(R.id.timeline_row_creator)).setText(createdBy);
+        holder.createdBy.setText(createdBy);
 
         String createdOn = CREATED_ON + event.getFormattedCreatedTime();
-        ((TextView) convertView.findViewById(R.id.timeline_row_created_date)).setText(createdOn);
+        holder.createdOn.setText(createdOn);
 
-        String startDate = START + event.getFormattedStartTime();
-        ((TextView) convertView.findViewById(R.id.timeline_row_start_date)).setText(startDate);
+        holder.description.setText(event.getDescription());
 
         String endDate = END + event.getFormattedEndTime();
-        ((TextView) convertView.findViewById(R.id.timeline_row_end_date)).setText(endDate);
+        holder.endDate.setText(endDate);
 
-        ((TextView) convertView.findViewById(R.id.timeline_row_description)).setText(event.getDescription());
+        String startDate = START + event.getFormattedStartTime();
+        holder.startDate.setText(startDate);
 
         return convertView;
+    }
+
+    private static class ViewHolder {
+
+        TextView title;
+        TextView createdBy;
+        TextView createdOn;
+        TextView startDate;
+        TextView endDate;
+        TextView description;
+
     }
 
 }

@@ -28,7 +28,7 @@ public class PlaceholderActivity extends Activity {
         calendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fh.replace(CONTAINER_ID, new CalendarFragment());
+                fh.replace(CONTAINER_ID, new CalendarFragment(), false);
             }
         });
 
@@ -36,7 +36,7 @@ public class PlaceholderActivity extends Activity {
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fh.replace(CONTAINER_ID, new ProfileFragment());
+                fh.replace(CONTAINER_ID, new ProfileFragment(), false);
             }
         });
     }

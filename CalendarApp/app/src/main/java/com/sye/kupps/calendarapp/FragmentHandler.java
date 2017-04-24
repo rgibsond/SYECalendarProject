@@ -23,11 +23,12 @@ public class FragmentHandler {
     }
 
     // handles replacing a fragment with a new one
-    public void replace(int containerTag, Fragment newFragment){
+    public void replace(int containerTag, Fragment newFragment, boolean addToBackStack){
         FragmentManager fm = activity.getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(containerTag, newFragment);
-        transaction.addToBackStack(null);
+        if (addToBackStack)
+            transaction.addToBackStack(null);
         transaction.commit();
     }
 
