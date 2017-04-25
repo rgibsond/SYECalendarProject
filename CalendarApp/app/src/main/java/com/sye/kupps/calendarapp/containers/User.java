@@ -14,6 +14,8 @@ public class User implements Serializable {
 
     String username;
 
+    String bio;
+
     LinkedList<Event> events;
 
     ArrayList<String> friends;
@@ -28,12 +30,13 @@ public class User implements Serializable {
         return this.events;
     }
 
-    public ArrayList<Event> getUserCreatedEvents() {
+    public ArrayList<Event> getAssociatedEvents() {
         ArrayList<Event> myEvents = new ArrayList<>();
         for (Event e : events) {
-            if (e.getCreator().equals(username))
+            if (e.getAttendees().get(username) != null)
                 myEvents.add(e);
         }
+        Collections.sort(myEvents);
         return myEvents;
     }
 
@@ -43,6 +46,10 @@ public class User implements Serializable {
 
     public void addFriend(String f) {
         this.friends.add(f);
+    }
+
+    public String getBio() {
+        return this.bio;
     }
 
     public ArrayList<String> getFriends() {

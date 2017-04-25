@@ -1,5 +1,6 @@
 package com.sye.kupps.calendarapp.login;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.sye.kupps.calendarapp.AppActivity;
 import com.sye.kupps.calendarapp.R;
 import com.sye.kupps.calendarapp.containers.MockDataMaker;
 import com.sye.kupps.calendarapp.containers.User;
@@ -83,7 +85,9 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.i(LOG_TAG, "Bypass used");
-
+                Intent app = new Intent(getContext(), AppActivity.class);
+                app.putExtra(LoginActivity.USER_OBJECT, MockDataMaker.createUser());
+                startActivity(app);
             }
         });
 

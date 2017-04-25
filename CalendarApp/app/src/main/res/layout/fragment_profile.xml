@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        >
+        android:layout_marginBottom="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,131 +20,60 @@
                 android:id="@+id/profile_picture"
                 android:layout_width="@dimen/prof_pic_h_w"
                 android:layout_height="@dimen/prof_pic_h_w"
-                android:background="@drawable/potter"
-                />
+                android:background="@drawable/potter" />
 
             <LinearLayout
                 android:id="@+id/user_info_layout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_alignParentEnd="true"
-                android:paddingRight="@dimen/padding_20">
+                android:padding="10dp">
 
                 <TextView
                     android:id="@+id/profile_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Harry Potter"
-                    android:textSize="@dimen/prof_info_text_size"
-                    />
+                    android:textSize="@dimen/medium_text_size" />
 
                 <TextView
-                    android:id="@+id/profile_current_status"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="*BUSY OR NOT*"
                     android:textSize="@dimen/prof_info_text_size"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gryffindor"
-                    android:textSize="@dimen/prof_info_text_size"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="*OTHER INFO*"
-                    android:textSize="@dimen/prof_info_text_size"
-                    />
+                    android:id="@+id/profile_bio"/>
 
             </LinearLayout>
 
         </LinearLayout>
-
-
 
         <LinearLayout
             android:id="@+id/profile_buttons_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_alignParentBottom="true"
-            >
+            android:layout_alignParentBottom="true">
 
             <Button
                 android:id="@+id/view_friends_button"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
                 android:layout_weight="1"
-                android:text="Harry Potter's friends"
-                />
+                android:text="View Friends" />
 
             <Button
                 android:id="@+id/open_calendar_from_profile"
                 android:layout_width="0dp"
                 android:layout_height="75dp"
                 android:layout_weight="1"
-                android:text="@string/view_calendar"
-                />
+                android:text="@string/view_calendar" />
 
         </LinearLayout>
 
-
     </RelativeLayout>
 
-    <LinearLayout
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:orientation="vertical"
-        >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".5"
-            android:text="Harry Potter's events today"
-            android:textSize="@dimen/prof_info_text_size"
-            android:textAlignment="center"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:textSize="@dimen/prof_info_text_size"
-            android:text="9:00-10:30 AM: Defense Against the Dark Arts"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:textSize="@dimen/prof_info_text_size"
-            android:text="11:15-11:45 AM: Lunch with Ginny Weasley"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:textSize="@dimen/prof_info_text_size"
-            android:text="12:00-3:30 PM: Quidditch Practice"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:textSize="@dimen/prof_info_text_size"
-            android:text="4:00-6:30 AM: Studying. Do not disturb"
-            />
-
-
-    </LinearLayout>
+        android:id="@+id/profile_list_view"/>
 
 </LinearLayout>

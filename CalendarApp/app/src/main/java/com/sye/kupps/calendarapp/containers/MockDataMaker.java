@@ -54,6 +54,7 @@ public class MockDataMaker {
         user.friends = new ArrayList<>();
         Collections.addAll(user.friends, friends);
         user.username = FakeUsername;
+        user.bio = "Quidditch is life. Started from a muggle now we here.";
         return user;
     }
 
@@ -66,15 +67,19 @@ public class MockDataMaker {
 
         events.add(createEvent("Ron Weasley", "Tailgate", times[0][0], times[0][1], times[0][2], descriptions[0]));
         events.add(createEvent("Hermoine Granger", "Study Session", times[1][0], times[1][1], times[1][2], descriptions[1]));
+        events.get(1).attendees.put(FakeUsername, Event.ATTENDANCE.Invited);
         events.add(createEvent("Draco Malfoy", "Hood Rat Stuff With My Frands", times[2][0], times[2][1], times[2][2], descriptions[2]));
         events.add(createEvent("Rubeus Hagrid", "Hike Through the Woods", times[3][0], times[3][1], times[3][2], descriptions[3]));
         events.add(createEvent("Severus Snape", "Sitting Quietly in a Room", times[4][0], times[4][1], times[4][2], descriptions[4]));
         events.add(createEvent("Harry Potter", "Quidditch Pickup Game", times[5][0], times[5][1], times[5][2], descriptions[5]));
         events.add(createEvent("Dobby", "Sock Shopping", times[6][0], times[6][1], times[6][2], descriptions[6]));
+        events.get(6).attendees.put(FakeUsername, Event.ATTENDANCE.Maybe);
         events.add(createEvent("Fred Weasley", "Various Practical Jokes", times[7][0], times[7][1], times[7][2], descriptions[7]));
         events.add(createEvent("Albus Dumbledore", "Award Ceremony", times[8][0], times[8][1], times[8][2], descriptions[8]));
+        events.get(8).attendees.put(FakeUsername, Event.ATTENDANCE.Going);
         events.add(createEvent("Sirius Black", "Prison Breakout", times[9][0], times[9][1], times[9][2], descriptions[9]));
 
+        Collections.sort(events);
         return events;
     }
 
@@ -91,7 +96,8 @@ public class MockDataMaker {
         tailgate.createdTime = createdTime;
 
         tailgate.attendees = new HashMap<>();
-        tailgate.attendees.put(creator, Event.ATTENDANCE.GOING);
+        tailgate.attendees.put(creator, Event.ATTENDANCE.Going);
+
         shuffle(friends);
         for (int i = 0; i < 10; i++) {
             tailgate.attendees.put(friends[i], statuses[r.nextInt(statuses.length)]);
@@ -124,7 +130,7 @@ public class MockDataMaker {
         times = new long[10][3];
         long range = 1492981972037L;
         for (long[] t : times) {
-            long time = ThreadLocalRandom.current().nextLong(range);
+            long time = ThreadLocalRandom.current().nextLong(range, range + 1000000000L);
             t[2] = time;
             t[0] = t[2] + (1000 * 60 * 60);
             t[1] = t[0] + (1000 * 60 * 60 * 3);

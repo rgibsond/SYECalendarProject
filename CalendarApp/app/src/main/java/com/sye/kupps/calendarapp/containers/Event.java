@@ -67,6 +67,10 @@ public class Event implements Comparable, Serializable {
         return this.createdTime;
     }
 
+    public HashMap<String, ATTENDANCE> getAttendees() {
+        return this.attendees;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -99,10 +103,10 @@ public class Event implements Comparable, Serializable {
     }
 
     enum ATTENDANCE {
-        GOING,
-        NOTGOING,
-        INVITED,
-        MAYBE
+        Going,
+        NotGoing,
+        Invited,
+        Maybe
     }
 
 }

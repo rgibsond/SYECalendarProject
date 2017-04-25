@@ -119,6 +119,13 @@ public class LoginFragment extends Fragment {
             // Simulate delayed results
             try {
                 Thread.sleep(1500L);
+
+                String username = params[0];
+                String password = params[1];
+
+                if (!username.equals("Harry Potter") || !password.equals("hogwarts"))
+                    return null;
+
                 return MockDataMaker.createUser();
             } catch (InterruptedException e) {
                 Log.i(LOG_TAG, "Task was interrupted");
