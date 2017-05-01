@@ -23,7 +23,19 @@ public class Event implements Comparable, Serializable {
     String creatorUsername;
     HashMap<String, ATTENDANCE> attendees;
 
-    Event() {}
+    Event() {
+    }
+
+    public Event(long startDateTime, long endDateTime, long createdTime, String title, String description, String creatorUsername){
+
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
+        this.createdTime = createdTime;
+        this.title = title;
+        this.description = description;
+        this.creatorUsername = creatorUsername;
+
+    }
 
     public String getTitle() {
         return this.title;

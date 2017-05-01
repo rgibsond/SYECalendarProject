@@ -1,4 +1,4 @@
-package com.sye.kupps.calendarapp.placeholders;
+package com.sye.kupps.calendarapp;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -2,6 +2,7 @@ package com.sye.kupps.calendarapp;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,11 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.sye.kupps.calendarapp.containers.Event;
+import com.sye.kupps.calendarapp.containers.User;
+
+import java.util.Calendar;
 
 public class CreateEventFragment extends Fragment {
 
@@ -22,6 +28,7 @@ public class CreateEventFragment extends Fragment {
     DatePicker datePicker;
     TimePicker startTimePicker, endTimePicker;
     Button submitButton, cancelButton;
+    User me;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,6 +41,7 @@ public class CreateEventFragment extends Fragment {
         datePicker = (DatePicker) root.findViewById(R.id.new_event_date_input);
         startTimePicker = (TimePicker) root.findViewById(R.id.event_start_time_input);
         endTimePicker = (TimePicker) root.findViewById(R.id.event_end_time_input);
+        me = ((AppActivity) getActivity()).getUser();
 
         submitButton = (Button) root.findViewById(R.id.submit_new_event_button);
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +62,25 @@ public class CreateEventFragment extends Fragment {
                     int month = datePicker.getMonth() +1;
                     int day = datePicker.getDayOfMonth();
 
-                    // TODO if it gets here, post data to database
+                    long createdTime = System.currentTimeMillis();
+
+                    // convert to milliseconds
+                    // start time
+                    Calendar c = Calendar.getInstance();
+                    c.set(year, month, day, startTimePicker.getHour(), startTimePicker.getMinute());
+                    long startTimeMill = c.getTimeInMillis();
+
+                    // end time
+                    c.set(year, month, day, endTimePicker.getHour(), endTimePicker.getMinute());
+                    long endTimeMill = c.getTimeInMillis();
+
+                    // create event
+                    Event e = new Event(startTimeMill, endTimeMill, createdTime, name, description, me.getUsername());
+
+                    me.addEvent(e);
+
+                    Toast.makeText(getContext(), "EVENT SUCCESSFULLY CREATED", Toast.LENGTH_SHORT).show();
+
                 }else{
                     Toast.makeText(getContext(), "Input valid start & end times", Toast.LENGTH_SHORT).show();
                 }
