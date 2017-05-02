@@ -63,6 +63,7 @@ public class AppActivity extends Activity {
             }
         });
 
+        fh.replace(CONTAINER_ID, new TimelineFragment(), false);
     }
 
     public User getUser() {
