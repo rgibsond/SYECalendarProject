@@ -34,6 +34,8 @@ public class Event implements Comparable, Serializable {
         this.title = title;
         this.description = description;
         this.creatorUsername = creatorUsername;
+        this.attendees = new HashMap<>();
+        this.attendees.put(creatorUsername, ATTENDANCE.Going);
 
     }
 

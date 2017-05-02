@@ -1,6 +1,7 @@
 package com.sye.kupps.calendarapp;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -62,11 +63,15 @@ public class AppActivity extends Activity {
             }
         });
 
-        fh.replace(CONTAINER_ID, new TimelineFragment(), false);
     }
 
     public User getUser() {
         return this.user;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 
 }

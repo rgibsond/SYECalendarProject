@@ -40,12 +40,8 @@ public class User implements Serializable {
         return myEvents;
     }
 
-    public void addEvent(Event e) {
-        this.events.addFirst(e);
-    }
-
-    public void addFriend(String f) {
-        this.friends.add(f);
+    public void addEvent(Event event) {
+        events.addFirst(event);
     }
 
     public String getBio() {

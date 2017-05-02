@@ -16,9 +16,11 @@ import com.sye.kupps.calendarapp.containers.User;
  */
 public class ProfileFragment extends Fragment {
 
+    private static final String LOG_TAG = ProfileFragment.class.getName();
+
     private ListView events;
-    private static final String EVENTS = "EVENTS";
-    private Button goToFriends, goToCalendar;
+    private static final String EVENT_POSITION = "EVENT_POSITION";
+    private static final String EVENT_OFFSET = "EVENT_OFFSET";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,16 +41,16 @@ public class ProfileFragment extends Fragment {
         ((TextView) root.findViewById(R.id.profile_bio)).setText(user.getBio());
 
         events = (ListView) root.findViewById(R.id.profile_list_view);
-        if (savedInstanceState != null)
-            events.onRestoreInstanceState(savedInstanceState.getParcelable(EVENTS));
-        else {
-            ProfileEventAdapter eventAdapter = new ProfileEventAdapter(getContext(), R.layout.profile_event_row, user.getAssociatedEvents());
-            eventAdapter.setUsername(user.getUsername());
-            events.setAdapter(eventAdapter);
+        events.setAdapter(new ProfileEventAdapter(getContext(), R.layout.profile_event_row, user.getAssociatedEvents()));
+
+        if (savedInstanceState != null) {
+            int position = savedInstanceState.getInt(EVENT_POSITION);
+            int offset = savedInstanceState.getInt(EVENT_OFFSET);
+            events.setSelectionFromTop(position, offset);
         }
 
         // TODO make buttons do stuff
-        goToFriends = (Button) root.findViewById(R.id.view_friends_button);
+        Button goToFriends = (Button) root.findViewById(R.id.view_friends_button);
         goToFriends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +58,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        goToCalendar = (Button) root.findViewById(R.id.open_calendar_from_profile);
+        Button goToCalendar = (Button) root.findViewById(R.id.open_calendar_from_profile);
         goToCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +72,11 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putParcelable(EVENTS, events.onSaveInstanceState());
+        savedInstanceState.putInt(EVENT_POSITION, events.getFirstVisiblePosition());
+
+        View v = events.getChildAt(0);
+        int offset = (v == null) ? 0 : (v.getTop() - events.getPaddingTop());
+        savedInstanceState.putInt(EVENT_OFFSET, offset);
     }
 
 }

@@ -12,9 +12,6 @@ import com.sye.kupps.calendarapp.containers.Event;
 
 import java.util.List;
 
-/**
- * Created by kupps on 4/24/17.
- */
 
 public class ProfileEventAdapter extends ArrayAdapter<Event> {
 
